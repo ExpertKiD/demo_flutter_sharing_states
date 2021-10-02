@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'inherited-widget.dart';
+import 'inherited_widget_demo.dart';
 
 /// For InheritedWidgets demo use
-main() => runApp(MyInheritedWidgetDemoApp());
+main() => runApp(const MyInheritedWidgetDemoApp());

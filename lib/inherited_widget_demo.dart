@@ -5,7 +5,7 @@ class MyInheritedWidgetDemoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Counter(),
     );
   }
@@ -25,7 +25,7 @@ class CounterState extends State<Counter> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Counter App with Inherited Widgets'),
+        title: const Text('Counter App with Inherited Widgets'),
         centerTitle: true,
       ),
       body: MyInheritedWidget(
@@ -62,7 +62,7 @@ class CounterState extends State<Counter> {
 
   void divideCounter(int value) {
     setState(() {
-      counter = (counter / value).toInt();
+      counter = counter ~/ value;
     });
   }
 }
@@ -114,7 +114,7 @@ class CounterViewer extends StatelessWidget {
         ),
         Container(
           color: Colors.grey.shade300,
-          padding: EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 16),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -123,25 +123,25 @@ class CounterViewer extends StatelessWidget {
                 onPressed: () {
                   counterState.addCounter(1);
                 },
-                child: Text('Add'),
+                child: const Text('Add'),
               ),
               ElevatedButton(
                 onPressed: () {
                   counterState.subtractCounter(1);
                 },
-                child: Text('Subtract'),
+                child: const Text('Subtract'),
               ),
               ElevatedButton(
                 onPressed: () {
                   counterState.multiplyCounter(3);
                 },
-                child: Text('Multiply'),
+                child: const Text('Multiply'),
               ),
               ElevatedButton(
                 onPressed: () {
                   counterState.divideCounter(3);
                 },
-                child: Text('Divide'),
+                child: const Text('Divide'),
               ),
             ],
           ),
