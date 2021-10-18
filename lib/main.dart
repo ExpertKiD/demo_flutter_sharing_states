@@ -7,5 +7,5 @@ import 'package:flutter/material.dart';
 /// For Scoped Model demo use
 // main() => runApp(const MyScopedModelDemoApp());
 
-/// For Scoped Model demo use
+/// For Provider demo use
 main() => runApp(const MyProviderDemoApp());

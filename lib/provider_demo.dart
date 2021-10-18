@@ -81,48 +81,51 @@ class CounterViewer extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          color: Colors.grey.shade300,
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Provider.of<CounterState>(context, listen: false)
-                      .addCounter(1);
-                },
-                child: const Text('Add'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Provider.of<CounterState>(context, listen: false)
-                      .subtractCounter(1);
-                },
-                child: const Text('Subtract'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Provider.of<CounterState>(context, listen: false)
-                      .multiplyCounter(3);
+        Consumer<CounterState>(
+          builder: (innerContext, value, child) {
+            return Container(
+              color: Colors.grey.shade300,
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      value.addCounter(10);
+                    },
+                    child: const Text('Add'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Provider.of<CounterState>(innerContext, listen: false)
+                          .subtractCounter(1);
+                    },
+                    child: const Text('Subtract'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Provider.of<CounterState>(innerContext, listen: false)
+                          .multiplyCounter(3);
 
-                  /// or
-                  // context.read<CounterState>().multiplyCounter(3);
-                },
-                child: const Text('Multiply'),
+                      /// or
+                      // context.read<CounterState>().multiplyCounter(3);
+                    },
+                    child: const Text('Multiply'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Provider.of<CounterState>(context, listen: false)
+                      //     .divideCounter(3);
+                      innerContext.read<CounterState>().divideCounter(3);
+                    },
+                    child: const Text('Divide'),
+                  ),
+                ],
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Provider.of<CounterState>(context, listen: false)
-                  //     .divideCounter(3);
-                  context.read<CounterState>().divideCounter(3);
-                },
-                child: const Text('Divide'),
-              ),
-            ],
-          ),
-        )
+            );
+          },
+        ),
       ],
     );
   }
